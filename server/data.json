@@ -1,0 +1,54 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "ian",
+      "password": "test123",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "username": "admin",
+      "password": "root",
+      "role": "admin"
+    }
+  ],
+  "products": [
+    {
+      "namaTrip": "Las Vegasss",
+      "gambar": "https://cdn.theculturetrip.com/wp-content/uploads/2019/05/feature_peeak0.jpg",
+      "tanggalMulai": 1599782400000,
+      "tanggalBerakhir": 1599868800000,
+      "harga": "43000000",
+      "deskripsi": "Perjalanan untuk menjadi pejudi terkenal bisa anda mulai dengan mengunjungi kota Las Vegas. Siapkan diri anda untuk menjadi milyarder",
+      "id": 2
+    },
+    {
+      "namaTrip": "Kuala Lumpur",
+      "gambar": "https://static.asiawebdirect.com/m/kl/portals/kuala-lumpur-ws/homepage/pagePropertiesOgImage/kuala-lumpur.jpg.jpg",
+      "tanggalMulai": 1599868800000,
+      "tanggalBerakhir": 1699868800000,
+      "harga": "1500000",
+      "deskripsi": "Perjalanan ke negeri jiran 3 hari 2 malam dapatkan sensasi berjalan-jalan di gemerlapnya kota kuala lumpur malaysia",
+      "id": 3
+    },
+    {
+      "namaTrip": "Trip to Hongkong",
+      "gambar": "https://awsimages.detik.net.id/community/media/visual/2020/01/21/8ee9743f-1a38-4569-bd71-7642c51a1b01_169.jpeg?w=780&q=90",
+      "tanggalMulai": 1600732800000,
+      "tanggalBerakhir": 1601078400000,
+      "harga": "11300000",
+      "deskripsi": "Perjalanan seru menuju hongkong kota termahal di dunia dengan keindahan dan kemegahan kota nya",
+      "id": 4
+    },
+    {
+      "namaTrip": "Trip Pulau Cinta, Gorontalo",
+      "gambar": "https://i.ibb.co/M6DShZ7/Pulo-Cinta-Gorontalo-Pulo-Cinta-2.jpg",
+      "tanggalMulai": 1300041600000,
+      "tanggalBerakhir": 1600041600000,
+      "harga": "5600000",
+      "deskripsi": "Traveling lokal ke kota gorontalo dengan pemandangan pantai yang indah dan perjalanan ke pulau cinta",
+      "id": 5
+    }
+  ]
+}
