@@ -1,19 +1,30 @@
 import React, { Component } from 'react';
-import Homescreen from './../../assets/homescreen.webp'
 import ImgTravel1 from './../../assets/img1.svg'
 import ImgTravel2 from './../../assets/img2.svg'
 import Header from '../../components/Header'
 import ButtonUi from '../../components/Button'
 import Footer from './../../components/Footer'
+import { Jumbotron, Button } from 'reactstrap';
+import './Home.css'
+import BackToTop from './../../components/BackToTop'
 
-class Home extends Component {
+class Home extends Component{
     state = {  }
     render() { 
         return ( 
             <div>
                 <Header/>
+                <BackToTop/>
                 <div style={{width:'100%'}}>
-                    <img alt='test' src={Homescreen} width='100%'/>
+                    <Jumbotron className='homescreen mb-0 pb-0 d-flex flex-column align-items-center justify-content-center'>
+                        <h1 className="display-3">Hello, world!</h1>
+                        <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
+                        <hr className="my-2" />
+                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                        <p className="lead">
+                        <Button color="primary">Learn More</Button>
+                        </p>
+                    </Jumbotron>
                 </div>
                 <div className='d-flex align-items-center justify-content-between px-5' style={{height:'8vh', background:'salmon', color:'whitesmoke'}}>
                     <div>Segera dapatkan paket promo dari kami</div>

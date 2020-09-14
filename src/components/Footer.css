@@ -1,0 +1,75 @@
+footer {
+    background-color: rgb(60,53,76);
+    color: white;
+    padding: 24px 96px 16px 96px;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+    font-size: 15.36px;
+    letter-spacing: 0.48px;
+    text-align: left;
+    transition: 300ms;
+}
+
+footer a:hover {
+    color: blue;
+}
+
+.footers {
+    margin-top: 80px;
+    display: flex;
+}
+
+.footer-content {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.sub-footer-content {
+    margin-top: 20px;
+}
+
+.sub-footer-content a{
+    display: block;
+    padding: 5px 0;
+}
+
+.footer-main {
+    font-weight: bold;
+}
+
+.find-us { 
+    width: 20%;
+}
+
+.find-us a {
+    display: block;
+    margin-bottom: 21px;
+
+}
+
+.socmed {
+    margin-top: -10px;
+}
+
+.socmed a {
+    display: inline;
+    color: white;
+    opacity: 60%;
+    font-size: 13px;
+    margin-right: 15px;
+}
+
+.copyright {
+    margin-top: 80px;
+}
+
+.copyright p {
+    border-top: 0.5px solid whitesmoke;
+    padding-top: 20px;
+    font-size: 10px;
+}

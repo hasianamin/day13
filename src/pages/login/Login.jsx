@@ -41,6 +41,22 @@ class Login extends Component {
         visible: false,
     }
 
+    componentDidMount = () => {
+        this.state.username.current.focus()
+    }
+
+    onKeyuphandler = (e) => {
+        if(e.keyCode === 13){
+            this.state.password.current.focus()
+        }
+    }
+
+    onKeyuphandlerSubmit = (e) => {
+        if(e.keyCode === 13){
+            this.onLoginClick()
+        }
+    }
+
     onDismiss = () => this.setState({visible: false})
 
     onLoginClick=()=> {
@@ -68,19 +84,19 @@ class Login extends Component {
         }
         return ( 
             <div className='row m-0 p-0'>
-                <div className='col-md-6 p-0 m-0'>
-                    <img width='100%' src={Foto} alt={Foto}/>
+                <div className='col-md-8 p-0 m-0' width='100%'>
+                    <img style={{width: '100%', objectFit: 'cover'}} src={Foto} alt={Foto}/>
                 </div>
-                <div className='col-md-6 p-0 m-0 d-flex justify-content-center align-items-center' style={{background:'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'}}>
+                <div className='col-md-4 p-0 m-0 d-flex justify-content-center align-items-center' style={{background:'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)'}}>
                     <div className='login-kotak d-flex px-4'>
                         <h1 className='align-self-center'>Login</h1>
-                        <div className='mt-3'>
-                            <TextField inputRef={this.state.username} className={classes.root} label="Username" />
+                        <div className='mt-4'>
+                            <TextField inputRef={this.state.username}  onKeyUp={this.onKeyuphandler}  className={classes.root} label="Username" />
                         </div>
-                        <div className='mt-3'>
-                            <TextField inputRef={this.state.password} className={classes.root} label="Password" type='password' />
+                        <div className='mt-4'>
+                            <TextField inputRef={this.state.password} onKeyUp={this.onKeyuphandlerSubmit} className={classes.root} label="Password" type='password' />
                         </div>
-                        <div className='mt-3'>
+                        <div className='mt-4'>
                             <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
                                 Invalid username or password
                             </Alert>

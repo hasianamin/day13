@@ -1,0 +1,6 @@
+
+
+.edit-focus:focus{
+    outline: none !important;
+    border: none !important;
+}

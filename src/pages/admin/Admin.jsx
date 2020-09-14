@@ -15,6 +15,7 @@ import {MdDeleteForever} from 'react-icons/md'
 import {BiEdit} from 'react-icons/bi'
 import Swal from 'sweetalert2'
 import ReadMoreReact from 'read-more-react'
+import './Admin.css'
 
 const useStyles = makeStyles({
   root: {
@@ -169,6 +170,12 @@ export default function StickyHeadTable(props) {
     }
     axios.put(`${API_URL}/products/${id}`,objedit)
     .then(()=>{
+      Swal.fire({
+        icon: 'success',
+        title: 'Data has been changed',
+        showConfirmButton: false,
+        timer: 1500
+      })
       axios.get(`${API_URL}/products`)
       .then((res)=>{
         setProduct(res.data)
@@ -234,7 +241,7 @@ export default function StickyHeadTable(props) {
 
   return (
       <>
-        <Modal isOpen={modal} toggle={toggle} className={className}>
+        <Modal isOpen={modal} toggle={toggle} className='modal-position'>
             <ModalHeader toggle={toggle}>Modal title</ModalHeader>
             <ModalBody>
               <form className="needs-validation" novalidate>
@@ -255,7 +262,7 @@ export default function StickyHeadTable(props) {
         </Modal>
         {
           product.length?
-          <Modal isOpen={modalEdit} toggle={toggleEdit} >
+          <Modal isOpen={modalEdit} toggle={toggleEdit} className='modal-position'>
                 <ModalHeader toggle={toggleEdit}>edit data {product.length?product[indexEdit].namaTrip:''}</ModalHeader>
                 <ModalBody>
                    <input type='text' defaultValue={product[indexEdit].namaTrip} ref={editForm.namaTrip} className='form-control mb-2'/>
@@ -280,7 +287,7 @@ export default function StickyHeadTable(props) {
           null
         }
         <Header/>
-        <div className="px-5">
+        <div className="px-5" style={{marginTop:'64px'}}>
             <div className="my-3 btn btn-outline-primary" onClick={toggle}>
                 Add data
             </div>

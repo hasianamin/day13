@@ -1,43 +1,56 @@
 import React from "react";
-import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
+import './Footer.css'
 
 const FooterPage = () => {
   return (
-    <MDBFooter color="red" className="font-small pt-4 mt-4">
-      <MDBContainer fluid className="text-center text-md-left">
-        <MDBRow>
-          <MDBCol md="6">
-            <h5 className="title">Footer Content</h5>
-            <p>
-              Here you can use rows and columns here to organize your footer
-              content.
-            </p>
-          </MDBCol>
-          <MDBCol md="6">
-            <h5 className="title">Links</h5>
-            <ul>
-              <li className="list-unstyled">
-                <a href="#!">Link 1</a>
-              </li>
-              <li className="list-unstyled">
-                <a href="#!">Link 2</a>
-              </li>
-              <li className="list-unstyled">
-                <a href="#!">Link 3</a>
-              </li>
-              <li className="list-unstyled">
-                <a href="#!">Link 4</a>
-              </li>
-            </ul>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-      <div className="footer-copyright text-center py-3">
-        <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} Copyright: <a href="https://www.mdbootstrap.com"> MDBootstrap.com </a>
-        </MDBContainer>
+    <footer>
+      <div className="footers">
+          <div className="footer-content">
+              <div className="footer-opt">
+                  <a className="footer-main">Principles</a>
+              </div>
+              <div className="footer-opt">
+                  <a className="footer-main">Pricing</a>
+                  <div className="sub-footer-content">
+                      <a>Surge pricing</a>
+                      <a>Upfront pricing</a>
+                      <a>Route-based pricing</a>
+                      <a>Driver promotions</a>
+                      <a>Uber services fee</a>
+                  </div>
+              </div>
+              <div className="footer-opt">
+                  <a className="footer-main">Matching</a>
+                  <div className="sub-footer-content">
+                      <a>Shared rides</a>
+                  </div>
+              </div>
+              <div className="footer-opt">
+                  <a className="footer-main">Open marketplace</a>
+                  <div className="sub-footer-content">
+                      <a>Marketplace health</a>
+                      <a>New product pilots</a>
+                  </div>
+              </div>
+              <div className="footer-opt">
+              </div>
+          </div>
+          <div className="find-us">
+              <a className="footer-main">Latest news</a>
+              <a className="footer-main">Careers</a>
+              <a className="footer-main">Follow us</a>
+              <div className="socmed">
+                  <a><i className="fab fa-facebook-f"></i></a>
+                  <a><i className="fab fa-twitter"></i></a>
+                  <a><i className="fab fa-linkedin-in"></i></a>
+                  <a><i className="fab fa-instagram"></i></a>
+              </div>
+          </div>
       </div>
-    </MDBFooter>
+      <div className="copyright">
+          <p>© 2020 JoinTrip Technologies Inc.</p>
+      </div>
+    </footer>
   );
 }
 

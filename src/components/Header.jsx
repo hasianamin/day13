@@ -13,6 +13,7 @@ import {LogoutFunc} from './../redux/actions'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Swal from 'sweetalert2'
 import {Redirect} from 'react-router-dom'
+import './Header.css'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -31,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function ButtonAppBar(props) {
+const ButtonAppBar = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [role, setRole] = useState(false)
   const toggle = () => setDropdownOpen(prevState => !prevState);
@@ -74,7 +75,7 @@ function ButtonAppBar(props) {
   
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.warna}>
+      <AppBar className={classes.warna}>
         <Toolbar>
           <a href='http://localhost:3000/'>
               <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
@@ -85,14 +86,16 @@ function ButtonAppBar(props) {
             JoinTrip
           </Typography>
           <Link to='/' style={{textDecoration:'none',color:'white'}}>
-            <Button color="inherit">Home</Button>
+            <Button color="inherit" className='edit-focus'>Home</Button>
           </Link>
           {
             props.Auth.isLogin?
             <Dropdown isOpen={dropdownOpen} toggle={toggle} size="sm">
-              <DropdownToggle caret className='d-flex align-items-center justify-content-center' color='link' style={{color:'white', textDecoration:'none'}}>
-                <AccountCircleIcon/>
-                <div className='mx-1' style={{textTransform:'uppercase'}}>{props.Auth.username}</div>
+              <DropdownToggle color='link'>
+                <Button className='d-flex align-items-center justify-content-center edit-focus' style={{color:'white', textDecoration:'none !important'}}>
+                  <AccountCircleIcon/>
+                  <div className='mx-1' style={{textTransform:'uppercase'}}>{props.Auth.username}</div>
+                </Button>
               </DropdownToggle>
               <DropdownMenu right>
                 {
