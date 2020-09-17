@@ -15,11 +15,11 @@
   ],
   "products": [
     {
-      "namaTrip": "Las Vegasss",
+      "namaTrip": "Las Vegas",
       "gambar": "https://cdn.theculturetrip.com/wp-content/uploads/2019/05/feature_peeak0.jpg",
       "tanggalMulai": 1599696000000,
       "tanggalBerakhir": 1600041600000,
-      "harga": "43100000",
+      "harga": "43100005",
       "deskripsi": "Perjalanan untuk menjadi pejudi terkenal bisa anda mulai dengan mengunjungi kota Las Vegas. Siapkan diri anda untuk menjadi milyarder",
       "id": 2
     },
@@ -50,5 +50,14 @@
       "deskripsi": "Traveling lokal ke kota gorontalo dengan pemandangan pantai yang indah dan perjalanan ke pulau cinta",
       "id": 5
     }
+  ],
+  "carts": [
+    
+  ],
+  "transactions": [
+    
+  ],
+  "transactionsdetails": [
+   
   ]
 }

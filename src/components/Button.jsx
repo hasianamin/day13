@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import './Button.css'
 
 class Button extends Component {
+
     render() { 
-        return ( 
-            <div>
-                <button className='btn btn-primary'>
-                    {this.props.children}
-                </button>
-            </div>
-         );
+        return (
+            <button className={`btn button-orange ${this.props.className}`} onClick={this.props.onClick}>
+                {this.props.children}
+            </button>
+        );
     }
 }
  

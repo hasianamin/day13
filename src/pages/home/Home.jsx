@@ -7,6 +7,7 @@ import Footer from './../../components/Footer'
 import { Jumbotron, Button } from 'reactstrap';
 import './Home.css'
 import BackToTop from './../../components/BackToTop'
+import {Link} from 'react-router-dom'
 
 class Home extends Component{
     state = {  }
@@ -26,9 +27,11 @@ class Home extends Component{
                         </p>
                     </Jumbotron>
                 </div>
-                <div className='d-flex align-items-center justify-content-between px-5' style={{height:'8vh', background:'salmon', color:'whitesmoke'}}>
+                <div className='d-flex align-items-center justify-content-between px-5' style={{height:'8vh', background:'#656380', color:'whitesmoke'}}>
                     <div>Segera dapatkan paket promo dari kami</div>
-                    <ButtonUi>Lihat promo</ButtonUi>
+                    <Link to='/Products'>
+                        <ButtonUi>Lihat promo</ButtonUi>
+                    </Link>
                 </div>
                 <div className='row p-0 m-0 mt-4'>
                     <div className='col-md-6 pl-5 m-0 py-5'>

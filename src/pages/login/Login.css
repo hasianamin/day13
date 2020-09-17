@@ -1,3 +1,7 @@
+span:hover {
+    cursor: pointer;
+}
+
 .login-kotak {
     width: 80%;
     border: 5px whitesmoke solid;
@@ -5,4 +9,23 @@
     border-radius: 20px;
     flex-direction: column;
     color: whitesmoke;
+}
+
+.homescreen {
+    background: url('./../../assets/homescreen.webp');
+    background-position: left; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    height: 760px; /* You must set a specified height */
+}
+
+.login-placeholder::placeholder{
+    color: white !important;
+}  
+
+.logo-img {
+    background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%) !important;
+    border-radius: 50%;
+    font-size: larger;
+    color: white;
 }

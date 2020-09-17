@@ -5,12 +5,16 @@ import ManageAdmin from './pages/admin/Admin'
 import {Switch, Route} from 'react-router-dom'
 import Login from './pages/login/Login'
 import {connect} from 'react-redux'
-import {LoginFunc} from './redux/actions'
+import {LoginFunc, UpdateCartFunc} from './redux/actions'
 import Axios from 'axios'
 import { API_URL } from './helpers/idrformat';
-import ReactLoading from 'react-loading';
+import NotFound from './pages/404Pages'
+import ListProd from './pages/listprod'
+import DetailProd from './pages/detailprod'
+import Cart from './pages/carts'
+import Loading from './components/Loading'
 
-function App(props, { type, color }) {
+function App(props) {
   const [loading, setLoading] = useState(true)
   useEffect(()=>{
     var id=localStorage.getItem('id')
@@ -18,6 +22,7 @@ function App(props, { type, color }) {
       Axios.get(`${API_URL}/users/${id}`)
       .then((res)=>{
         props.LoginFunc(res.data)
+        props.UpdateCartFunc()
       }).catch((err)=>console.log(err))
       .finally(()=>{
         setLoading(false)
@@ -26,22 +31,51 @@ function App(props, { type, color }) {
       setLoading(false)
     }
   },[])
+
   if(loading){
     return(
       <div>
-        <ReactLoading type={type} color={color} height={'20%'} width={'20%'} />
+        <Loading/>
       </div>
     )
   }
+
+  const renderProtectedroutesadmin = () => {
+    if(props.Auth.role==='admin')
+    {
+      return(
+        <>
+          <Route exact path='/ManageAdmin' component={ManageAdmin}/>
+        </>
+      )
+    } else{
+      return(
+        <>
+          <NotFound/>
+        </>
+      )
+    }
+  }
+
   return (
     <div>
       <Switch>
         <Route exact path='/' component={Home}/>
-        <Route exact path='/ManageAdmin' component={ManageAdmin}/>
         <Route exact path='/Login' component={Login}/>
+        <Route exact path='/Products' component={ListProd}/>
+        <Route exact path='/Cart' component={Cart} />
+        <Route path='/Products/:id' component={DetailProd}/>
+        {renderProtectedroutesadmin()}
+        <Route path='*' component={NotFound}/>
       </Switch>
     </div>
   );
 }
 
-export default connect(null,{LoginFunc})(App);
+const Mapstatetoprops=(state)=>{
+  return{
+      Auth:state.Auth
+  }
+}
+
+export default connect(Mapstatetoprops,{LoginFunc, UpdateCartFunc})(App);

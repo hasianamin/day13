@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function StickyHeadTable(props) {
+function StickyHeadTable(props) {
   const classes = useStyles();
   const [modal, setModal] = useState(false);
   const [modalEdit, setModalEdit] = useState(false)
@@ -316,3 +316,5 @@ export default function StickyHeadTable(props) {
       </>
   );
 }
+
+export default StickyHeadTable

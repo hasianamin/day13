@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -9,11 +9,12 @@ import FlightTakeOff from '@material-ui/icons/FlightTakeoff'
 import {Link} from 'react-router-dom'
 import { connect } from 'react-redux';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import {LogoutFunc} from './../redux/actions'
+import {LogoutFunc, ResetCartFunc} from './../redux/actions'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import Swal from 'sweetalert2'
-import {Redirect} from 'react-router-dom'
 import './Header.css'
+import Badge from '@material-ui/core/Badge';
+import {FaCartArrowDown} from 'react-icons/fa'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -32,13 +33,25 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const StyledBadge = withStyles(() => ({
+  badge: {
+    right: -3,
+    top: 5,
+    color:'white',
+    fontSize:11,
+    background: 'red'
+  },
+}))(Badge);
+
 const ButtonAppBar = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [role, setRole] = useState(false)
   const toggle = () => setDropdownOpen(prevState => !prevState);
-  
+  const [onLogout, setOnLogout] = useState(false)
+ 
   const classes = useStyles();
   const logout = () => {
+    setOnLogout(true)
     Swal.fire({
       title: 'Are you sure?',
       icon: 'warning',
@@ -53,16 +66,17 @@ const ButtonAppBar = (props) => {
           {
             username:'',
             password:'',
+            role:'',
             id:0,
             isLogin: false
           }
         )
+        props.ResetCartFunc()
         Swal.fire(
           'Goodbye!',
           'You just logout',
           'success'
-          )
-        return <Redirect to='/'/>
+        )
       }
     })
   }
@@ -88,6 +102,23 @@ const ButtonAppBar = (props) => {
           <Link to='/' style={{textDecoration:'none',color:'white'}}>
             <Button color="inherit" className='edit-focus'>Home</Button>
           </Link>
+          {
+            role?
+            null
+            :
+            props.Auth.isLogin?
+            <Link to='/Cart' style={{textDecoration:'none',color:'white'}}>
+              <Button color="inherit">
+                <StyledBadge badgeContent={props.Cart.jmlCart} color='secondary' >
+                  <span style={{fontSize:20}}>
+                    <FaCartArrowDown />
+                  </span>
+                </StyledBadge>
+              </Button>
+            </Link>
+            :
+            null
+          }
           {
             props.Auth.isLogin?
             <Dropdown isOpen={dropdownOpen} toggle={toggle} size="sm">
@@ -124,8 +155,9 @@ const ButtonAppBar = (props) => {
 
 const Mapstatetoprops=(state)=>{
   return{
-      Auth:state.Auth
+      Auth:state.Auth,
+      Cart:state.CountCart
   }
 }
 
-export default connect(Mapstatetoprops,{LogoutFunc})(ButtonAppBar)
+export default connect(Mapstatetoprops,{LogoutFunc,ResetCartFunc})(ButtonAppBar)
