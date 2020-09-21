@@ -120,10 +120,10 @@ class Cart extends Component {
         const {pilihan}=this.state
         if(pilihan ==='1'){
             this.onBayarPakeBukti()
-            this.props.ResetCartFunc()
+            // this.props.ResetCartFunc()
         }else if(pilihan === '2'){
             this.onBayarPakeCC()
-            this.props.ResetCartFunc()
+            // this.props.ResetCartFunc()
         }else{
             alert('pilih jenis pembayaran dulu')
         }
@@ -167,7 +167,8 @@ class Cart extends Component {
                                 'Sukses!',
                                 'Pembayaran telah selesai',
                                 'success'
-                              )
+                            )
+                            this.props.ResetCartFunc()
                         }).catch((err)=>console.log(err))
                     }).catch((err)=>console.log(err))
                 }).catch((err)=>console.log(err))
@@ -232,6 +233,12 @@ class Cart extends Component {
                     }).catch((err)=>console.log(err))
                 }).catch((err)=>console.log(err))
             }).catch((err)=>console.log(err))
+            Swal.fire(
+                'Sukses!',
+                'Menunggu konfirmasi pembayaran oleh admin',
+                'success'
+            )
+            this.props.ResetCartFunc()
         }).catch((err)=>console.log(err))
     }
 

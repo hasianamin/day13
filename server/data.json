@@ -41,14 +41,62 @@
       "password": "Bonia123!",
       "role": "user",
       "id": 7
+    },
+    {
+      "username": "saas",
+      "password": "123asd",
+      "role": "user",
+      "id": 8
+    },
+    {
+      "username": "boni",
+      "password": "boni125",
+      "role": "user",
+      "id": 9
+    },
+    {
+      "username": "dadang",
+      "password": "a12345",
+      "role": "user",
+      "id": 10
+    },
+    {
+      "username": "babal",
+      "password": "babal1",
+      "role": "user",
+      "id": 11
+    },
+    {
+      "username": "bambang",
+      "password": "kaka123",
+      "role": "user",
+      "id": 12
+    },
+    {
+      "username": "koki",
+      "password": "kokikok1",
+      "role": "user",
+      "id": 15
+    },
+    {
+      "username": "ians",
+      "password": "ian12345",
+      "role": "user",
+      "id": 16
+    },
+    {
+      "username": "koko",
+      "password": "koko123",
+      "role": "user",
+      "id": 17
     }
   ],
   "products": [
     {
       "namaTrip": "Las Vegas",
       "gambar": "https://cdn.theculturetrip.com/wp-content/uploads/2019/05/feature_peeak0.jpg",
-      "tanggalMulai": 1599696000000,
-      "tanggalBerakhir": 1600041600000,
+      "tanggalMulai": 1602460800000,
+      "tanggalBerakhir": 1603238400000,
       "harga": "43100005",
       "deskripsi": "Perjalanan untuk menjadi pejudi terkenal bisa anda mulai dengan mengunjungi kota Las Vegas. Siapkan diri anda untuk menjadi milyarder",
       "id": 2
@@ -56,8 +104,8 @@
     {
       "namaTrip": "Kuala Lumpur",
       "gambar": "https://static.asiawebdirect.com/m/kl/portals/kuala-lumpur-ws/homepage/pagePropertiesOgImage/kuala-lumpur.jpg.jpg",
-      "tanggalMulai": 1599868800000,
-      "tanggalBerakhir": 1699833600000,
+      "tanggalMulai": 1600819200000,
+      "tanggalBerakhir": 1601251200000,
       "harga": "1523000",
       "deskripsi": "Perjalanan ke negeri jiran 3 hari 2 malam dapatkan sensasi berjalan-jalan di gemerlapnya kota kuala lumpur malaysia",
       "id": 3
@@ -65,7 +113,7 @@
     {
       "namaTrip": "Trip to Hongkongs",
       "gambar": "https://awsimages.detik.net.id/community/media/visual/2020/01/21/8ee9743f-1a38-4569-bd71-7642c51a1b01_169.jpeg?w=780&q=90",
-      "tanggalMulai": 1600732800000,
+      "tanggalMulai": 1600905600000,
       "tanggalBerakhir": 1601078400000,
       "harga": "11300000",
       "deskripsi": "Perjalanan seru menuju hongkong kota termahal di dunia dengan keindahan dan kemegahan kota nya",
@@ -74,8 +122,8 @@
     {
       "namaTrip": "Trip Pulau Cinta, Kota Gorontalo",
       "gambar": "https://i.ibb.co/M6DShZ7/Pulo-Cinta-Gorontalo-Pulo-Cinta-2.jpg",
-      "tanggalMulai": 1300060800000,
-      "tanggalBerakhir": 1600041600000,
+      "tanggalMulai": 1601251200000,
+      "tanggalBerakhir": 1601424000000,
       "harga": "5600000",
       "deskripsi": "Traveling lokal ke kota gorontalo dengan pemandangan pantai yang indah dan perjalanan ke pulau cinta",
       "id": 5
@@ -140,10 +188,10 @@
       "id": 2
     },
     {
-      "userId": 1,
-      "productId": 4,
-      "qty": 1,
-      "id": 3
+      "userId": 16,
+      "productId": 3,
+      "qty": 5,
+      "id": 4
     }
   ],
   "transactions": [
@@ -172,12 +220,108 @@
       "id": 3
     },
     {
-      "status": "waitingAdminConfirm",
+      "status": "completed",
       "userId": 1,
       "tanggalPembayaran": 1600402037392,
       "metode": "upload",
       "buktiPembayaran": "3234567891011",
       "id": 4
+    },
+    {
+      "status": "completed",
+      "userId": 1,
+      "tanggalPembayaran": 1600674331308,
+      "metode": "cc",
+      "buktiPembayaran": "378282246310005",
+      "id": 5
+    },
+    {
+      "status": "completed",
+      "userId": 1,
+      "tanggalPembayaran": 1600674431319,
+      "metode": "cc",
+      "buktiPembayaran": "5610591081018250",
+      "id": 6
+    },
+    {
+      "status": "waitingAdminConfirm",
+      "userId": 1,
+      "tanggalPembayaran": 1600674501762,
+      "metode": "upload",
+      "buktiPembayaran": "zxczxc",
+      "id": 7
+    },
+    {
+      "status": "waitingAdminConfirm",
+      "userId": 1,
+      "tanggalPembayaran": 1600674547593,
+      "metode": "upload",
+      "buktiPembayaran": "dfs",
+      "id": 8
+    },
+    {
+      "status": "waitingAdminConfirm",
+      "userId": 1,
+      "tanggalPembayaran": 1600674608359,
+      "metode": "upload",
+      "buktiPembayaran": "baba",
+      "id": 9
+    },
+    {
+      "status": "waitingAdminConfirm",
+      "userId": 17,
+      "tanggalPembayaran": 1600675871930,
+      "metode": "upload",
+      "buktiPembayaran": "zxczxc",
+      "id": 10
+    },
+    {
+      "status": "waitingAdminConfirm",
+      "userId": 9,
+      "tanggalPembayaran": 1600676010549,
+      "metode": "upload",
+      "buktiPembayaran": "asdasd",
+      "id": 11
+    },
+    {
+      "status": "waitingAdminConfirm",
+      "userId": 9,
+      "tanggalPembayaran": 1600676138204,
+      "metode": "upload",
+      "buktiPembayaran": "zxc",
+      "id": 12
+    },
+    {
+      "status": "waitingAdminConfirm",
+      "userId": 9,
+      "tanggalPembayaran": 1600677863345,
+      "metode": "upload",
+      "buktiPembayaran": "asd",
+      "id": 13
+    },
+    {
+      "status": "waitingAdminConfirm",
+      "userId": 9,
+      "tanggalPembayaran": 1600679990200,
+      "metode": "upload",
+      "buktiPembayaran": "1",
+      "id": 14
+    },
+    {
+      "status": "completed",
+      "userId": 1,
+      "tanggalPembayaran": 1600683969630,
+      "metode": "upload",
+      "buktiPembayaran": "fa",
+      "id": 15
+    },
+    {
+      "status": "completed",
+      "userId": 1,
+      "tanggalPembayaran": 1600683993772,
+      "metode": "upload",
+      "buktiPembayaran": "12",
+      "id": 16
     }
   ],
   "transactionsdetails": [
@@ -285,6 +429,118 @@
       "price": 4100000,
       "qty": 2,
       "id": 15
+    },
+    {
+      "transactionId": 5,
+      "productId": 4,
+      "price": 11300000,
+      "qty": 1,
+      "id": 16
+    },
+    {
+      "transactionId": 5,
+      "productId": 5,
+      "price": 5600000,
+      "qty": 5,
+      "id": 17
+    },
+    {
+      "transactionId": 6,
+      "productId": 4,
+      "price": 11300000,
+      "qty": 3,
+      "id": 18
+    },
+    {
+      "transactionId": 7,
+      "productId": 7,
+      "price": 31252000,
+      "qty": 2,
+      "id": 19
+    },
+    {
+      "transactionId": 7,
+      "productId": 2,
+      "price": 43100005,
+      "qty": 1,
+      "id": 20
+    },
+    {
+      "transactionId": 8,
+      "productId": 9,
+      "price": 37822000,
+      "qty": 3,
+      "id": 21
+    },
+    {
+      "transactionId": 9,
+      "productId": 6,
+      "price": 23050000,
+      "qty": 2,
+      "id": 22
+    },
+    {
+      "transactionId": 10,
+      "productId": 3,
+      "price": 1523000,
+      "qty": 3,
+      "id": 23
+    },
+    {
+      "transactionId": 10,
+      "productId": 5,
+      "price": 5600000,
+      "qty": 2,
+      "id": 24
+    },
+    {
+      "transactionId": 11,
+      "productId": 2,
+      "price": 43100005,
+      "qty": 1,
+      "id": 25
+    },
+    {
+      "transactionId": 12,
+      "productId": 3,
+      "price": 1523000,
+      "qty": 5,
+      "id": 26
+    },
+    {
+      "transactionId": 13,
+      "productId": 4,
+      "price": 11300000,
+      "qty": 2,
+      "id": 27
+    },
+    {
+      "transactionId": 13,
+      "productId": 6,
+      "price": 23050000,
+      "qty": 3,
+      "id": 28
+    },
+    {
+      "transactionId": 14,
+      "productId": 2,
+      "price": 43100005,
+      "qty": 1,
+      "id": 29
+    },
+    {
+      "transactionId": 15,
+      "productId": 9,
+      "price": 37822000,
+      "qty": 3,
+      "id": 30
+    },
+    {
+      "transactionId": 16,
+      "productId": 4,
+      "price": 11300000,
+      "qty": 1,
+      "id": 31
     }
   ]
 }

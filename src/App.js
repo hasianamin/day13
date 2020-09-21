@@ -13,6 +13,9 @@ import ListProd from './pages/listprod'
 import DetailProd from './pages/detailprod'
 import Cart from './pages/carts'
 import Loading from './components/Loading'
+import History from './pages/history'
+import Profile from './pages/profile'
+import ConfirmPayment from './pages/confirmPayment'
 
 function App(props) {
   const [loading, setLoading] = useState(true)
@@ -40,22 +43,22 @@ function App(props) {
     )
   }
 
-  const renderProtectedroutesadmin = () => {
-    if(props.Auth.role==='admin')
-    {
-      return(
-        <>
-          <Route exact path='/ManageAdmin' component={ManageAdmin}/>
-        </>
-      )
-    } else{
-      return(
-        <>
-          <NotFound/>
-        </>
-      )
-    }
-  }
+  // const renderProtectedroutesadmin = () => {
+  //   if(props.Auth.role==='admin')
+  //   {
+  //     return(
+  //       <>
+  //         <Route exact path='/ManageAdmin' component={ManageAdmin}/>
+  //       </>
+  //     )
+  //   } else{
+  //     return(
+  //       <>
+  //         <NotFound/>
+  //       </>
+  //     )
+  //   }
+  // }
 
   return (
     <div>
@@ -65,7 +68,11 @@ function App(props) {
         <Route exact path='/Products' component={ListProd}/>
         <Route exact path='/Cart' component={Cart} />
         <Route path='/Products/:id' component={DetailProd}/>
-        {renderProtectedroutesadmin()}
+        {/* {renderProtectedroutesadmin()} */}
+        <Route exact path='/ManageAdmin' component={ManageAdmin} />
+        <Route exact path='/History' component={History}/>
+        <Route exact path='/Profile' component={Profile}/>
+        <Route exact path='/ConfirmPayment' component={ConfirmPayment}/>
         <Route path='*' component={NotFound}/>
       </Switch>
     </div>

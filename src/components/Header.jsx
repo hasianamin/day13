@@ -131,13 +131,29 @@ const ButtonAppBar = (props) => {
               <DropdownMenu right>
                 {
                   role?
+                  <>
+                    <DropdownItem>
+                      <Link to='/ManageAdmin' style={{textDecoration:'none'}}>
+                        Manage Dashboard
+                      </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                      <Link to='/ConfirmPayment' style={{textDecoration:'none'}}>
+                        Manage Payment
+                      </Link>
+                    </DropdownItem>
+                  </>
+                  :
+                  <>
                   <DropdownItem>
-                    <Link to='/ManageAdmin' style={{textDecoration:'none'}}>
-                      Manage Dashboard
+                    <Link to='/Profile'>Profile</Link>
+                  </DropdownItem>
+                  <DropdownItem>
+                    <Link to='/History' style={{textDecoration:'none'}}>
+                      History
                     </Link>
                   </DropdownItem>
-                  :
-                  <DropdownItem>Profile</DropdownItem>
+                  </>
                 }
                 <DropdownItem onClick={logout}>Logout</DropdownItem>
               </DropdownMenu>

@@ -101,6 +101,10 @@ class Login extends Component {
         this.setState({alertPassStrength:false})
     }
 
+    onDismissLength = () => {
+        this.setState({alertPassLength:false})
+    }
+
     onDismissReg = (x)=>{
         if(x==='pass'){
             this.setState({alertPass:false})
@@ -137,8 +141,11 @@ class Login extends Component {
                 return val.username === regU
             })
             if(checkUser.length === 0){
-                var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})")
+                // var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})")
+                var strongRegex = new RegExp("^(?=.*[a-z]||[A-Z])(?=.*[0-9])(?=.{6,})")
+                // var strongRegex = new RegExp("^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$")
                 var checkPassword = regP.match(strongRegex)
+                console.log(checkPassword)
                 if(checkPassword){
                     if(regP === regConfP){
                         var obj = {
@@ -148,8 +155,8 @@ class Login extends Component {
                         }
                         Axios.post(`${API_URL}/users`,obj)
                         .then(()=>{
-                           this.setState({regStatus:true})
-                           Swal.fire(
+                            this.setState({regStatus:true})
+                            Swal.fire(
                             'Successfuly Sign Up!',
                             'Please login',
                             'success'
@@ -298,7 +305,7 @@ class Login extends Component {
                                                     Username has been used by someone
                                                 </Alert>
                                                 <Alert color="danger" isOpen={this.state.alertPassStrength} toggle={this.onDismissStrength}>
-                                                    Password must contain capital letter, number, and symbol
+                                                    Password length minimum should be 6 character and contain letter and number
                                                 </Alert>
                                             </div>
                                             <div className='my-2 align-self-end'>

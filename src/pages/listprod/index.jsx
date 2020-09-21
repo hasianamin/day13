@@ -12,14 +12,18 @@ class ListProd extends Component {
      }
 
     componentDidMount(){
-        Axios.get(`${API_URL}/products`)
+        Axios.get(`${API_URL}/products?_sort=namaTrip&_order=asc`)
         .then((res)=>{
             this.setState({Products:res.data})
         }).catch((err)=>console.log(err))
     }
 
     renderCard = () => {
-        return this.state.Products.map((val)=>{
+        var z = new Date().getTime()
+        var temp = this.state.Products.filter((val)=>{
+            return val.tanggalMulai >= z
+        })
+        return temp.map((val)=>{
             return(
                 <div key={val.id} className="col-md-3 px-2 py-2">
                     <Link to={'/products/'+val.id}>

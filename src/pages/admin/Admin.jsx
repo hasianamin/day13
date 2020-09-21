@@ -16,6 +16,8 @@ import {BiEdit} from 'react-icons/bi'
 import Swal from 'sweetalert2'
 import ReadMoreReact from 'read-more-react'
 import './Admin.css'
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -238,8 +240,9 @@ function StickyHeadTable(props) {
   
   const toggle = () => setModal(!modal);
   const toggleEdit = () => setModalEdit(!modalEdit);
-
-  return (
+  console.log(props.role)
+  if(props.role==='admin'){
+    return (
       <>
         <Modal isOpen={modal} toggle={toggle} className='modal-position'>
             <ModalHeader toggle={toggle}>Modal title</ModalHeader>
@@ -314,7 +317,21 @@ function StickyHeadTable(props) {
             </Paper>
         </div>
       </>
-  );
+    );
+  } else{
+    return(
+      <>
+        <Redirect to='/'/>
+      </>
+    )
+  }
+  
 }
 
-export default StickyHeadTable
+const MapstatetoProps=({Auth})=>{
+  return{
+      ...Auth
+  }
+}
+
+export default connect(MapstatetoProps)(StickyHeadTable)
