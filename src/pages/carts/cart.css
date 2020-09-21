@@ -1,0 +1,11 @@
+TableCell{
+    text-align: center;
+}
+
+.empty-cart {
+    background: url('./../../assets/undraw_empty_cart_co35.webp');
+    background-position: center;
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: contain; /* Resize the background image to cover the entire container */
+    height: 400px; /* You must set a specified height */
+}

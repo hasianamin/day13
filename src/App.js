@@ -17,7 +17,7 @@ import Loading from './components/Loading'
 function App(props) {
   const [loading, setLoading] = useState(true)
   useEffect(()=>{
-    var id=localStorage.getItem('id')
+    var id=JSON.parse(localStorage.getItem('id'))
     if(id){
       Axios.get(`${API_URL}/users/${id}`)
       .then((res)=>{

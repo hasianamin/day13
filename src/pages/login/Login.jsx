@@ -4,7 +4,7 @@ import {Alert} from 'reactstrap'
 import TextField from '@material-ui/core/TextField';
 import {connect} from 'react-redux'
 import {Redirect} from 'react-router-dom'
-import {LoginFunc, LoginThunk, ClearError, UpdateCartFunc} from './../../redux/actions'
+import {LoginThunk, ClearError, UpdateCartFunc} from './../../redux/actions'
 import { TabContent, TabPane, Nav, NavItem, NavLink, Card, CardTitle, CardText, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 import ButtonUi from './../../components/Button'
@@ -27,16 +27,24 @@ class Login extends Component {
         alertReg: false,
         alertLogin: false,
         alertPass: false,
-        alertUsername: false
+        alertUsername: false,
+        alertPassStrength: false
     }
 
-    
     toggle = (tab) => {
-        if(this.state.activeTab !== tab) this.setState({activeTab:tab});
+        if(this.state.activeTab !== tab)this.setState({activeTab:tab});
+    }
+
+    focusLogin=()=>{
+        this.state.username.current.focus()
+    }
+    
+    focusSignup=()=>{
+        this.state.regUsername.current.focus()
     }
 
     componentDidMount = () => {
-        this.state.username.current.focus()
+        this.focusLogin()
         Axios.get(`${API_URL}/users`)
         .then((res)=>{
             this.setState({userData:res.data})
@@ -44,6 +52,10 @@ class Login extends Component {
         if(this.props.Auth.isLogin){   
             this.props.UpdateCartFunc()
         }
+    }
+
+    componentDidUpdate=()=>{
+        if(this.state.activeTab === '2') this.focusSignup()
     }
 
     onKeyuphandler = (e) => {
@@ -85,6 +97,10 @@ class Login extends Component {
         this.setState({alertUsername:false})
     }
 
+    onDismissStrength = () => {
+        this.setState({alertPassStrength:false})
+    }
+
     onDismissReg = (x)=>{
         if(x==='pass'){
             this.setState({alertPass:false})
@@ -109,6 +125,7 @@ class Login extends Component {
         this.onDismissUser()
         this.onDismissReg('pass')
         this.onDismissReg()
+        this.onDismissStrength()
         const {regUsername, regPass, regConfirmPass} = this.state
         var regU = regUsername.current.value
         var regP = regPass.current.value
@@ -120,28 +137,34 @@ class Login extends Component {
                 return val.username === regU
             })
             if(checkUser.length === 0){
-                console.log(checkUser.length)
-                if(regP === regConfP){
-                    var obj = {
-                        username: regU,
-                        password: regP,
-                        role: "user"
+                var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})")
+                var checkPassword = regP.match(strongRegex)
+                if(checkPassword){
+                    if(regP === regConfP){
+                        var obj = {
+                            username: regU,
+                            password: regP,
+                            role: "user"
+                        }
+                        Axios.post(`${API_URL}/users`,obj)
+                        .then(()=>{
+                           this.setState({regStatus:true})
+                           Swal.fire(
+                            'Successfuly Sign Up!',
+                            'Please login',
+                            'success'
+                            )
+                            regUsername.current.value = ''
+                            regPass.current.value = ''
+                            regConfirmPass.current.value = ''
+                            this.toggle('1')
+                            this.focusLogin()
+                        }).catch((err)=>console.log(err))
+                    } else{
+                        this.setState({alertPass:true})
                     }
-                    Axios.post(`${API_URL}/users`,obj)
-                    .then(()=>{
-                       this.setState({regStatus:true})
-                    }).catch((err)=>console.log(err))
-                    Swal.fire(
-                        'Successfuly Sign Up!',
-                        'Please login',
-                        'success'
-                    )
-                    regUsername.current.value = ''
-                    regPass.current.value = ''
-                    regConfirmPass.current.value = ''
-                    this.toggle('1')
-                } else{
-                    this.setState({alertPass:true})
+                }else{
+                    this.setState({alertPassStrength:true})
                 }
             } else{
                 this.setState({alertUsername:true})
@@ -150,7 +173,6 @@ class Login extends Component {
     }
     
     render() { 
-        console.log(this.props.Auth)
         if(this.props.Auth.isLogin){
             this.props.UpdateCartFunc()
             return <Redirect to='/'/>
@@ -275,6 +297,9 @@ class Login extends Component {
                                                 <Alert color="danger" isOpen={this.state.alertUsername} toggle={this.onDismissUser}>
                                                     Username has been used by someone
                                                 </Alert>
+                                                <Alert color="danger" isOpen={this.state.alertPassStrength} toggle={this.onDismissStrength}>
+                                                    Password must contain capital letter, number, and symbol
+                                                </Alert>
                                             </div>
                                             <div className='my-2 align-self-end'>
                                                 <ButtonUi onClick={this.onRegisterClick} className='px-3 py-2 rounded text-white'>
@@ -299,4 +324,4 @@ const Mapstatetoprops=(state)=>{
     }
 }
 
-export default connect(Mapstatetoprops,{LoginFunc, LoginThunk, ClearError, UpdateCartFunc})(Login);
+export default connect(Mapstatetoprops,{LoginThunk, ClearError, UpdateCartFunc})(Login);

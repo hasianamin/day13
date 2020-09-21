@@ -10,6 +10,7 @@ import {connect} from 'react-redux'
 import './detailprod.css'
 import Swal from 'sweetalert2'
 import {UpdateCartFunc} from './../../redux/actions'
+import Loading from '../../components/Loading';
 
 
 class DetailProd extends Component {
@@ -46,20 +47,25 @@ class DetailProd extends Component {
                     var checkProdItem = this.state.userCart.filter((val)=>{
                         return val.productId === this.state.products.id
                     })
-                    console.log(checkProdItem.length)
                     if(checkProdItem.length){
-                        console.log(checkProdItem.length)
-                        console.log('masuk sini')
-                        //ini masih error bsk tanya ke mas dino
-                        Axios.patch(`${API_URL}/carts?productId=${this.state.products.id}`,{
-                            qty:parseInt(this.state.qty.current.value)+this.state.userCart[0].qty
-                        }).then(()=>{
-                            this.props.UpdateCartFunc()
-                            Swal.fire(
-                                'Cart ditambahkan!',
-                                'Silahkan cek cart mu',
-                                'success'
-                            )
+                        Axios.get(`${API_URL}/users?id=${localStorage.getItem('id')}&_embed=carts`)
+                        .then((res2)=>{
+                            var z = res2.data[0].carts
+                            var cek = z.filter((val)=>{
+                                return val.productId === this.state.products.id  
+                            })
+                            var p = parseInt(cek[0].qty) + parseInt(this.state.qty.current.value)
+                            Axios.patch(`${API_URL}/carts/${cek[0].id}`,{
+                                qty:p
+                            }).then(()=>{
+                                this.props.UpdateCartFunc()
+                                Swal.fire(
+                                    'Cart ditambahkan!',
+                                    'Silahkan cek cart mu',
+                                    'success'
+                                )
+                                this.state.qty.current.value = ''                                
+                            }).catch((err)=>console.log(err))
                         }).catch((err)=>console.log(err))
                     }else{
                         Axios.post(`${API_URL}/carts`,{
@@ -90,7 +96,7 @@ class DetailProd extends Component {
         const {products, isOpen} = this.state
         if(this.state.loading){
             return (
-                <div>Loading...</div>
+                <Loading/>
             )
         }
         if(this.state.keLogin){
